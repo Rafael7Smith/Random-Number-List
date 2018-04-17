@@ -8,9 +8,9 @@
 //Linked list called myList
 struct myStruct
 {
-  int data;
-  struct myStruct *next;
-} *myList;
+  int data;  //Element, a number named data (the value)
+  struct myStruct *next;  //A pointer, that leads to the next structure
+} *myList;  //myList is a valid name for this structure
 
 // Declare the used functions
 void FirstElements(), addnum(), findnum();
@@ -137,6 +137,8 @@ int menu()
 }
 
 //add random numbers to myList
+//passed integer for how many numbers to add
+//and pointer for the list to add the numbers to
 void addnum(int a, struct myStruct *ptr)
 {
   int r,i;
@@ -145,15 +147,15 @@ void addnum(int a, struct myStruct *ptr)
   
   /*Generate and assign the new number to data */
   r = 100 + rand() % 901;
-  ptr->data = r;
+  ptr->data = r;  
  
   for(i=0; i<a - 1; i++)
   {
-    ptr->next = malloc(sizeof(struct myStruct)); /* allocates memory for first element */
-    r = 100 + rand() % 901;
-    next = ptr->next;
-    next->data =r;
-    ptr = next;
+    ptr->next = malloc(sizeof(struct myStruct)); /* allocates memory for the next element */
+    r = 100 + rand() % 901;  //generate the random number
+    next = ptr->next;  //move the pointer next to the address we allocated above
+    next->data =r;   //assign the data integer element to the random number generated
+    ptr = next;  //move the pointer to the address
   }
   /* at end make sure that the last element pointer to the next structure is set to null */
   ptr->next = NULL;
